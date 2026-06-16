@@ -2,24 +2,35 @@
 import { computed, ref } from 'vue'
 import { posts, tagColor } from '../data/posts'
 
-// 一些筛选器
-const showZhOnly = ref(false)
+// 是否只看中文（antfu 的 English Only 开关）
+const zhOnly = ref(false)
 
-// 按年份分组
-const grouped = computed(() => {
-  const filtered = showZhOnly.value ? posts.filter(p => p.lang === 'zh') : posts
-  const map = new Map<string, typeof posts>()
-  for (const p of filtered) {
-    const y = p.date.slice(0, 4)
-    if (!map.has(y)) map.set(y, [])
-    map.get(y)!.push(p)
+const visiblePosts = computed(() =>
+  zhOnly.value ? posts.filter(p => p.lang === 'zh' || !p.lang) : posts,
+)
+
+const groupKeys = computed(() => {
+  const set = new Set<string>()
+  for (const p of visiblePosts.value) {
+    set.add(p.date.slice(0, 4))
   }
-  return Array.from(map.entries()).sort((a, b) => Number(b[0]) - Number(a[0]))
+  return Array.from(set).sort((a, b) => Number(b) - Number(a))
+})
+
+const grouped = computed(() => {
+  return groupKeys.value.map(year => ({
+    year,
+    items: visiblePosts.value.filter(p => p.date.startsWith(year)),
+  }))
 })
 
 function formatDate(iso: string) {
   const d = new Date(iso)
-  return `${d.getMonth() + 1} 月 ${d.getDate()} 日`
+  const y = d.getFullYear()
+  const now = new Date().getFullYear()
+  // 跟 antfu 一致：本年度只显示 M月D日，往年才带年份
+  if (y === now) return `${d.getMonth() + 1} 月 ${d.getDate()} 日`
+  return `${y} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日`
 }
 
 function langLabel(lang?: 'zh' | 'en') {
@@ -38,75 +49,84 @@ function langClass(lang?: 'zh' | 'en') {
 <template>
   <article>
     <div class="prose m-auto slide-enter-content">
+      <!-- 顶部开关 + 简介 -->
       <div class="prose m-auto mb-8 select-none animate-none op100">
         <button
-          flex="~ gap-1" items-center mb-3 op-30 text-sm
-          @click="showZhOnly = !showZhOnly"
+          class="flex items-center gap-1 mb-3 op-30 text-sm"
+          @click="zhOnly = !zhOnly"
         >
-          <i :class="showZhOnly ? 'i-ri-checkbox-circle-line' : 'i-ri-checkbox-blank-circle-line'"></i>
+          <i :class="zhOnly ? 'i-ri-checkbox-circle-line' : 'i-ri-checkbox-blank-circle-line'" />
           只看中文
         </button>
-        <div class="mb-0 flex flex-col sm:flex-row sm:gap-3 flex-wrap text-3xl">
-          <router-link to="/posts" class="!border-none opacity-100 underline">博客</router-link>
-        </div>
-        <p class="op-50 italic mt-2 text-sm">
+        <p class="op-50 italic mt-0 mb-0 text-sm">
           写点 AI、Agent 架构、个人知识管理、个人成长相关的事。
         </p>
       </div>
 
-      <ul>
-        <template v-for="([year, items], i) in grouped" :key="year">
+      <ul class="post-list">
+        <template v-for="(g, gi) in grouped" :key="g.year">
+          <!-- 年份大字符 -->
           <div
             class="select-none relative h-20 pointer-events-none slide-enter"
-            :style="{ '--enter-stage': i * 2 - 2, '--enter-step': '60ms' }"
+            :style="{ '--enter-stage': gi * 2 - 2, '--enter-step': '60ms' }"
           >
             <span
               class="text-8em color-transparent absolute left--3rem top--2rem font-bold stroke-text-2 op10"
-            >{{ year }}</span>
+            >{{ g.year }}</span>
           </div>
-          <div
-            v-for="(p, j) in items"
+
+          <!-- 每篇文章 -->
+          <li
+            v-for="(p, j) in g.items"
             :key="p.slug"
-            class="slide-enter"
-            :style="{ '--enter-stage': i * 2 + j + 1, '--enter-step': '60ms' }"
+            class="post-item slide-enter"
+            :style="{ '--enter-stage': gi * 2 + j + 1, '--enter-step': '60ms' }"
           >
-            <router-link
-              :to="`/posts/${p.slug}`"
-              class="list-item block font-normal mb-6 mt-2 no-underline"
+            <a
+              :href="`#/posts/${p.slug}`"
+              class="post-item-link"
             >
-              <li class="no-underline flex flex-col md:row gap-2 md:items-center">
-                <div class="title text-lg leading-1.2em flex gap-2 flex-wrap items-center">
+              <div class="post-row">
+                <div class="post-title-wrap">
                   <span
                     v-if="langLabel(p.lang)"
-                    align-middle flex-none
-                    :class="['text-xs rounded px-1.5 py-0.5', langClass(p.lang)]"
+                    class="lang-badge"
+                    :class="langClass(p.lang)"
                   >{{ langLabel(p.lang) }}</span>
-                  <span class="align-middle">{{ p.title }}</span>
-                  <span
+                  <span class="post-title">{{ p.title }}</span>
+                  <i
                     v-if="p.redirect"
-                    align-middle op50 flex-none text-xs ml--1.5 i-carbon-arrow-up-right
+                    class="post-external op-50 ml--1.5"
                     title="外部链接"
                   />
                 </div>
-                <div class="flex gap-2 items-center list-item-row flex-wrap">
-                  <span class="text-sm op50 ws-nowrap">{{ formatDate(p.date) }}</span>
-                  <span v-if="p.readTime" class="text-sm op40 ws-nowrap">· {{ p.readTime }} 分钟</span>
-                  <span
-                    v-for="t in p.tags"
-                    :key="t"
-                    :class="['text-xs rounded px-1.5 py-0.5', tagColor(t)]"
-                  >#{{ t }}</span>
+
+                <div class="post-meta">
+                  <span class="post-date">{{ formatDate(p.date) }}</span>
+                  <span v-if="p.readTime" class="post-sub">· {{ p.readTime }} 分钟</span>
                 </div>
-              </li>
-              <div v-if="p.desc" class="op-60 text-sm mt-1">
+              </div>
+
+              <div v-if="p.tags && p.tags.length" class="post-tags">
+                <span
+                  v-for="t in p.tags"
+                  :key="t"
+                  class="post-tag"
+                  :class="tagColor(t)"
+                >#{{ t }}</span>
+              </div>
+
+              <div v-if="p.desc" class="post-desc op-60">
                 {{ p.desc }}
               </div>
-            </router-link>
-          </div>
+            </a>
+          </li>
         </template>
       </ul>
 
-      <div v-if="!posts.length" class="op-50 italic">还没有文章。</div>
+      <div v-if="!visiblePosts.length" class="op-50 italic">
+        还没有文章。
+      </div>
     </div>
   </article>
 
@@ -122,3 +142,121 @@ function langClass(lang?: 'zh' | 'en') {
     <div class="flex-auto"></div>
   </div>
 </template>
+
+<style scoped>
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  padding-left: 0 !important;
+  margin: 1.25rem 0;
+}
+
+.post-item::before {
+  display: none;
+}
+
+.post-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 0 !important;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-out;
+}
+
+.post-item-link:hover {
+  opacity: 1;
+}
+
+.post-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+@media (min-width: 768px) {
+  .post-row {
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+.post-title-wrap {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.post-title {
+  font-size: 1.125rem;
+  line-height: 1.2em;
+  font-weight: 500;
+}
+
+.lang-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  margin-left: -0.75rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .lang-badge {
+    margin-left: 0;
+  }
+}
+
+.post-external::before {
+  content: '↗';
+  font-size: 0.85em;
+}
+
+.post-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.post-date {
+  font-size: 0.875rem;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+.post-sub {
+  font-size: 0.875rem;
+  opacity: 0.4;
+  white-space: nowrap;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.post-tag {
+  font-size: 0.7rem;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+
+.post-desc {
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+</style>

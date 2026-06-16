@@ -48,23 +48,35 @@ onBeforeUnmount(() => {
       aria-label="返回首页"
       title="Yiguo · 个人主页"
     >
-      <!-- 简洁鹰剪影：单条 path 勾勒侧面展翅的鹰 -->
+      <!-- 签名风格 "Yg" 标志：Y 的右臂顺势连到 g 的起笔，整体一气呵成 -->
       <svg
-        viewBox="0 0 64 64"
+        viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="w-full h-full"
         aria-hidden="true"
       >
-        <title>Eagle</title>
+        <title>Yiguo</title>
         <path
           class="logo-path"
-          d="M6 32 Q16 26 26 30 L30 28 Q34 22 40 24 L44 26 Q48 22 52 26 L56 28 Q58 32 54 34 L48 36 Q44 38 40 36 L36 38 Q32 40 28 38 L24 36 Q16 38 10 36 Q4 34 6 32 Z"
-          stroke-width="2"
+          d="
+            M 22 20
+            L 38 56
+            M 38 56
+            L 54 20
+            M 38 56
+            C 38 64, 50 60, 60 58
+            C 72 56, 80 66, 78 74
+            C 76 84, 60 86, 52 80
+            C 46 75, 48 66, 56 64
+            M 56 64
+            L 56 84
+            C 56 90, 50 92, 46 88
+          "
+          stroke-width="3"
           stroke-linejoin="round"
           stroke-linecap="round"
         />
-        <circle class="logo-eye" cx="48" cy="30" r="1" />
       </svg>
     </a>
 
@@ -118,11 +130,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.logo-eye {
-  fill: currentColor;
-  opacity: 0.7;
-}
-
 .nav-link-item {
   cursor: pointer;
   color: inherit;
@@ -136,11 +143,6 @@ onBeforeUnmount(() => {
 }
 
 .nav-link-item:hover {
-  opacity: 1;
-}
-
-.nav-link-item.router-link-active,
-.nav-link-item.active {
   opacity: 1;
 }
 </style>
