@@ -37,7 +37,7 @@ jobs:
 
       - name: Build
         env:
-          # 如果你的仓库名是 antfu-clone，base 就是 /antfu-clone/
+          # 自动以仓库名作为 base 路径（仓库名是 eagle → /eagle/）
           # 如果是 xxx.github.io 用户主页，base 是 /
           VITE_BASE: /${{ github.event.repository.name }}/
         run: npm run build

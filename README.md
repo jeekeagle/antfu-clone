@@ -1,9 +1,9 @@
-# antfu-clone
+# Eagle
 
-复刻 [antfu.me](https://antfu.me) 风格的个人网站，**Vue 3 + Vite + UnoCSS**。
+复刻 [antfu.me](https://antfu.me) 风格的个人网站，**Vue 3 + Vite + UnoCSS + 霞鹜文楷**。
 
 ## 在线预览
-GitHub Pages：https://&lt;你的用户名&gt;.github.io/antfu-clone/
+GitHub Pages：https://&lt;你的用户名&gt;.github.io/eagle/
 
 ## 快速开始
 
@@ -21,15 +21,15 @@ npm run preview  # 预览构建产物
 
 ### 一次性配置
 
-1. **创建 GitHub 仓库**（假设叫 `antfu-clone`）
+1. **创建 GitHub 仓库**（假设叫 `eagle`）
 2. **初始化并 push 代码**
    ```bash
-   cd antfu-clone
+   cd eagle
    git init
    git add .
-   git commit -m "init: antfu-clone"
+   git commit -m "init: eagle"
    git branch -M main
-   git remote add origin git@github.com:<你的用户名>/antfu-clone.git
+   git remote add origin git@github.com:<你的用户名>/eagle.git
    git push -u origin main
    ```
 3. **开启 GitHub Pages**
@@ -37,7 +37,7 @@ npm run preview  # 预览构建产物
    - Source 选 **GitHub Actions**（不是 "Deploy from a branch"）
 4. **等待部署完成**
    - Actions 标签页可以看到构建进度
-   - 部署成功后访问 `https://<你的用户名>.github.io/antfu-clone/`
+   - 部署成功后访问 `https://<你的用户名>.github.io/eagle/`
 
 ### 自定义域名（可选）
 
