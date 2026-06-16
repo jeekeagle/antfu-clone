@@ -15,7 +15,7 @@ const socials = [
 // 工具 / 站点占位
 const links = {
   projects: '/#/projects',
-  bookmarks: '/#/bookmarks',
+  bookmarks: '#',
   websites: '/#/websites',
   use: '/#/use',
   photos: '/#/photos',

@@ -9,7 +9,6 @@ const Home = () => import('./pages/index.vue')
 const Posts = () => import('./pages/posts.vue')
 const Post = () => import('./pages/post.vue')
 const Projects = () => import('./pages/projects.vue')
-const Bookmarks = () => import('./pages/bookmarks.vue')
 const Websites = () => import('./pages/websites.vue')
 const Photos = () => import('./pages/photos.vue')
 const Paintings = () => import('./pages/paintings.vue')
@@ -22,7 +21,6 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: '/', component: Home },
-    { path: '/bookmarks', component: Bookmarks },
     { path: '/posts', component: Posts },
     { path: '/posts/:slug', component: Post, props: true },
     { path: '/projects', component: Projects },
