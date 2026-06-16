@@ -4,13 +4,13 @@ import { demos } from '../data/content'
 
 <template>
   <div class="text-center prose m-auto mb-8">
-    <h1 class="mb-0 slide-enter-50">Demos</h1>
+    <h1 class="mb-0 slide-enter-50">实验</h1>
   </div>
 
   <article>
     <div class="prose m-auto slide-enter-content">
       <p class="op50 italic">
-        Small interactive experiments and generative art.
+        一些小型交互实验和生成艺术作品。
       </p>
       <hr />
 
@@ -46,7 +46,7 @@ import { demos } from '../data/content'
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         style="color: inherit"
       >CC BY-NC-SA 4.0</a>
-      2021-{{ new Date().getFullYear() }} © Your Name
+      2021-{{ new Date().getFullYear() }} © 你的名字
     </span>
     <div class="flex-auto"></div>
   </div>

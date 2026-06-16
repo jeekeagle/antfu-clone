@@ -19,14 +19,14 @@ if (!post.value) {
       <div class="prose m-auto mt-8 mb-8 slide-enter animate-delay-500">
         <br />
         <span class="font-mono op50">&gt; </span>
-        <router-link to="/posts" class="font-mono op50 hover:op75">back</router-link>
+        <router-link to="/posts" class="font-mono op50 hover:op75">返回</router-link>
       </div>
 
       <div v-if="post">
         <h1>{{ post.title }}</h1>
         <p class="op50 text-sm">
-          {{ new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
-          <span v-if="post.readTime"> · {{ post.readTime }} min read</span>
+          {{ new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+          <span v-if="post.readTime"> · 阅读 {{ post.readTime }} 分钟</span>
         </p>
 
         <p v-if="post.desc" class="italic op75">{{ post.desc }}</p>
@@ -34,18 +34,16 @@ if (!post.value) {
         <hr />
 
         <p>
-          This is a placeholder post body. In your real site, render MD/MDX
-          content here. Common approaches:
+          这是文章正文的占位内容。在你的真实站点里，可以接入 markdown 渲染，常见方案：
         </p>
         <ul>
-          <li>Use <code>unplugin-vue-markdown</code> for <code>.md</code> imports</li>
-          <li>Use <code>@nuxt/content</code> if migrating to Nuxt</li>
-          <li>Use Vite's <code>?raw</code> import and a markdown renderer</li>
+          <li>使用 <code>unplugin-vue-markdown</code> 直接 <code>.md</code> 导入</li>
+          <li>迁移到 Nuxt 后用 <code>@nuxt/content</code></li>
+          <li>用 Vite 的 <code>?raw</code> 导入 + markdown 渲染器</li>
         </ul>
 
         <p>
-          Or just write inline content in a <code>&lt;script setup&gt;</code> file.
-          Each post is a single Vue route with full type safety.
+          也可以直接在 <code>&lt;script setup&gt;</code> 里写正文。每篇文章就是一个 Vue 路由。
         </p>
       </div>
     </div>
@@ -58,7 +56,7 @@ if (!post.value) {
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         style="color: inherit"
       >CC BY-NC-SA 4.0</a>
-      2021-{{ new Date().getFullYear() }} © Your Name
+      2021-{{ new Date().getFullYear() }} © 你的名字
     </span>
     <div class="flex-auto"></div>
   </div>

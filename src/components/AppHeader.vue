@@ -7,13 +7,13 @@ const showScrollTop = ref(false)
 const isMobile = ref(false)
 
 const navItems = [
-  { to: '/posts', title: 'Blog', icon: 'i-ri-article-line', text: 'Blog' },
-  { to: '/projects', title: 'Projects', icon: 'i-ri-lightbulb-line', text: 'Projects' },
-  { to: '/talks', title: 'Talks', icon: 'i-ri-slideshow-line', text: 'Talks', hideOnMobile: true },
-  { to: '/sponsors-list', title: 'Sponsors', icon: 'i-ri-heart-line', text: 'Sponsors' },
-  { to: '/podcasts', title: 'Podcasts', icon: 'i-ri-mic-line', text: 'Podcasts', hideOnMobile: true },
-  { to: '/photos', title: 'Photos', icon: 'i-ri-camera-3-line', text: 'Photos' },
-  { to: '/demos', title: 'Demos', icon: 'i-ri-screenshot-line', text: 'Demos' },
+  { to: '/posts', title: '博客', icon: 'i-ri-article-line', text: '博客' },
+  { to: '/projects', title: '项目', icon: 'i-ri-lightbulb-line', text: '项目' },
+  { to: '/talks', title: '演讲', icon: 'i-ri-slideshow-line', text: '演讲', hideOnMobile: true },
+  { to: '/sponsors-list', title: '赞助者', icon: 'i-ri-heart-line', text: '赞助' },
+  { to: '/podcasts', title: '播客', icon: 'i-ri-mic-line', text: '播客', hideOnMobile: true },
+  { to: '/photos', title: '摄影', icon: 'i-ri-camera-3-line', text: '摄影' },
+  { to: '/demos', title: '实验', icon: 'i-ri-screenshot-line', text: '实验' },
 ]
 
 function updateBreakpoint() {
@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
       to="/"
       class="app-logo"
       focusable="false"
-      aria-label="Home"
+      aria-label="首页"
     >
       <!-- 复刻 antfu 的手写体 SVG logo + 笔画动画 -->
       <svg
@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
         xmlns="http://www.w3.org/2000/svg"
         class="w-full h-full"
       >
-        <title>Your Name @ yourname.dev</title>
+        <title>个人主页</title>
         <g>
           <path
             class="logo-path"
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
     </router-link>
 
     <button
-      title="Scroll to top"
+      title="回到顶部"
       class="scroll-top-btn"
       :class="{ visible: showScrollTop }"
       @click="scrollToTop"
@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
 
         <a
           class="cursor-pointer select-none"
-          title="Toggle Color Scheme"
+          title="切换深色 / 浅色"
           @click.prevent="toggle"
         >
           <i class="i-ri-sun-line dark:i-ri-moon-line" />

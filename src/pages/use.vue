@@ -1,23 +1,22 @@
 <script setup lang="ts">
 /**
- * Hardware/Software I use
- * 列出来你的开发环境配置
+ * 常用硬件 / 软件
  */
 const hardware = [
-  { name: 'MacBook Pro 14"', desc: 'M3 Pro, 36GB RAM' },
-  { name: 'Mechanical Keyboard', desc: 'Keychron Q1' },
-  { name: 'Logitech MX Master 3S', desc: 'Daily driver mouse' },
-  { name: 'LG UltraFine 5K', desc: 'External display' },
+  { name: 'MacBook Pro 14 寸', desc: 'M3 Pro，36GB 内存' },
+  { name: '机械键盘', desc: 'Keychron Q1' },
+  { name: '罗技 MX Master 3S', desc: '日常主力鼠标' },
+  { name: 'LG UltraFine 5K', desc: '外接显示器' },
 ]
 
 const software = [
-  { name: 'VS Code / Cursor', desc: 'Editor' },
-  { name: 'iTerm2 + tmux', desc: 'Terminal' },
-  { name: 'Raycast', desc: 'Launcher' },
-  { name: 'Figma', desc: 'Design' },
-  { name: 'Arc', desc: 'Browser' },
-  { name: 'Linear', desc: 'Issues' },
-  { name: 'Notion', desc: 'Notes' },
+  { name: 'VS Code / Cursor', desc: '编辑器' },
+  { name: 'iTerm2 + tmux', desc: '终端' },
+  { name: 'Raycast', desc: '启动器' },
+  { name: 'Figma', desc: '设计' },
+  { name: 'Arc', desc: '浏览器' },
+  { name: 'Linear', desc: '任务管理' },
+  { name: 'Notion', desc: '笔记' },
 ]
 </script>
 
@@ -29,11 +28,11 @@ const software = [
   <article>
     <div class="prose m-auto slide-enter-content">
       <p class="op50 italic">
-        Hardware and software I use on a daily basis.
+        我日常使用的硬件和软件清单。
       </p>
       <hr />
 
-      <h2>Hardware</h2>
+      <h2>硬件</h2>
       <ul>
         <li
           v-for="(h, i) in hardware"
@@ -45,7 +44,7 @@ const software = [
         </li>
       </ul>
 
-      <h2>Software</h2>
+      <h2>软件</h2>
       <ul>
         <li
           v-for="(s, i) in software"
@@ -66,7 +65,7 @@ const software = [
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         style="color: inherit"
       >CC BY-NC-SA 4.0</a>
-      2021-{{ new Date().getFullYear() }} © Your Name
+      2021-{{ new Date().getFullYear() }} © 你的名字
     </span>
     <div class="flex-auto"></div>
   </div>

@@ -1,54 +1,56 @@
 /**
- * 个人简介数据 —— 复刻 antfu.me 首页的"X of Y"结构
+ * 个人简介数据 —— 中文版
+ * 复刻 antfu.me 首页的"X of Y"结构
  * 把占位文字替换为你的真实信息即可
  */
 
 export const profile = {
-  name: 'Your Name',
+  name: '你的名字',
   handle: 'yourname',
   email: 'hi@yourname.dev',
   domain: 'yourname.dev',
-  bio: "Hey! I'm Your Name, a fanatical open sourceror and design engineer.",
-  location: 'Somewhere on Earth',
+  bio: '你好！我是你的名字，一个痴迷开源的设计工程师。',
+  location: '地球上某处',
 
-  // Working at
+  // Working at —— 就职于
   work: [
-    { name: 'Your Company', href: 'https://example.com', avatar: '' },
-    { name: 'Your Project', href: 'https://example.com', avatar: '' },
+    { name: '你的公司', href: 'https://example.com', avatar: '' },
+    { name: '你的项目', href: 'https://example.com', avatar: '' },
   ],
 
-  // Creator of
+  // Creator of —— 我创造了
   creator: [
-    { name: 'Project One', href: 'https://example.com', avatar: '' },
-    { name: 'Project Two', href: 'https://example.com', avatar: '' },
-    { name: 'Project Three', href: 'https://example.com', avatar: '' },
-    { name: 'Project Four', href: 'https://example.com', avatar: '' },
+    { name: '项目一', href: 'https://example.com', avatar: '' },
+    { name: '项目二', href: 'https://example.com', avatar: '' },
+    { name: '项目三', href: 'https://example.com', avatar: '' },
+    { name: '项目四', href: 'https://example.com', avatar: '' },
   ],
 
-  // Core team of
+  // Core team of —— 核心团队成员
   coreTeam: [
-    { name: 'Framework A', href: 'https://example.com', avatar: '' },
-    { name: 'Framework B', href: 'https://example.com', avatar: '' },
+    { name: '框架 A', href: 'https://example.com', avatar: '' },
+    { name: '框架 B', href: 'https://example.com', avatar: '' },
   ],
 
-  // Maintaining
+  // Maintaining —— 维护中
   maintaining: [
-    { name: 'Tool X', href: 'https://example.com', avatar: '' },
-    { name: 'Tool Y', href: 'https://example.com', avatar: '' },
+    { name: '工具 X', href: 'https://example.com', avatar: '' },
+    { name: '工具 Y', href: 'https://example.com', avatar: '' },
   ],
 
   // 社交
   socials: [
     { name: 'GitHub', href: 'https://github.com', icon: 'i-simple-icons-github' },
-    { name: 'Bluesky', href: 'https://bsky.app', icon: 'i-ri-bluesky-fill' },
-    { name: 'Twitter', href: 'https://twitter.com', icon: 'i-ri-twitter-x-fill' },
-    { name: 'Discord', href: 'https://discord.com', icon: 'i-simple-icons-discord' },
+    { name: '知乎', href: 'https://zhihu.com', icon: 'i-simple-icons-zhihu' },
+    { name: '微博', href: 'https://weibo.com', icon: 'i-simple-icons-sinaweibo' },
+    { name: 'X', href: 'https://x.com', icon: 'i-ri-twitter-x-fill' },
+    { name: 'B站', href: 'https://bilibili.com', icon: 'i-simple-icons-bilibili' },
   ],
 
   // 赞助
   sponsors: [
-    { name: 'Sponsor the Ecosystem', href: 'https://opencollective.com', icon: 'i-ph-hand-heart-duotone', class: 'btn-rose' },
-    { name: 'Sponsor me', href: 'https://github.com/sponsors', icon: 'i-ph-heart-duotone', class: 'btn-rose' },
+    { name: '赞助开源生态', href: 'https://opencollective.com', icon: 'i-ph-hand-heart-duotone', class: 'btn-rose' },
+    { name: '直接赞助我', href: 'https://github.com/sponsors', icon: 'i-ph-heart-duotone', class: 'btn-rose' },
     { name: '在爱发电上支持我', href: 'https://afdian.com', icon: 'i-ph-lightning-duotone', class: 'btn-yellow' },
   ],
 }

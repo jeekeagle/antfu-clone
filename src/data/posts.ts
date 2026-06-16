@@ -1,92 +1,91 @@
 /**
- * 博客文章数据
- * date 使用 ISO 字符串
+ * 博客文章 + 演讲数据（中文）
  */
 export interface Post {
   slug: string
   title: string
   date: string
-  readTime?: number // minutes
+  readTime?: number // 阅读时长（分钟）
   tags?: string[]
-  lang?: 'en' | 'zh' | 'ja'
+  lang?: 'zh' | 'en'
   desc?: string
   content?: string
 }
 
 export const posts: Post[] = [
   {
-    slug: 'introducing-myself',
-    title: 'Introducing Myself',
+    slug: 'qing-zhu-yi-xia',
+    title: '自我介绍',
     date: '2025-12-01',
     readTime: 3,
-    tags: ['meta'],
-    desc: 'A quick intro to who I am and what I work on.',
+    tags: ['随笔'],
+    desc: '关于我是谁、在做什么的一份简要说明。',
   },
   {
-    slug: 'building-my-personal-site',
-    title: 'Building My Personal Site with Vue + UnoCSS',
+    slug: 'da-jian-ge-ren-zhan',
+    title: '用 Vue + UnoCSS 搭建个人站点',
     date: '2025-09-15',
     readTime: 8,
-    tags: ['vue', 'unocss', 'web'],
-    desc: 'Notes on rebuilding my personal site, inspired by antfu.me.',
+    tags: ['Vue', 'UnoCSS', 'Web'],
+    desc: '记录我从零搭建个人站的过程，灵感来自 antfu.me。',
   },
   {
-    slug: 'notes-on-design-systems',
-    title: 'Notes on Design Systems',
+    slug: 'she-ji-ti-xi-bi-ji',
+    title: '设计体系随笔',
     date: '2025-06-20',
     readTime: 6,
-    tags: ['design'],
-    desc: 'A few things I learned shipping design systems at scale.',
+    tags: ['设计'],
+    desc: '关于构建企业级设计体系的几点心得。',
   },
   {
-    slug: 'thinking-in-components',
-    title: 'Thinking in Components',
+    slug: 'zu-jian-hua-si-wei',
+    title: '组件化思维',
     date: '2025-03-04',
     readTime: 5,
-    tags: ['frontend'],
-    desc: 'How I structure components in modern Vue apps.',
+    tags: ['前端'],
+    desc: '我在 Vue 项目里组织组件的几个原则。',
   },
   {
-    slug: 'on-open-source-sustainability',
-    title: 'On Open Source Sustainability',
+    slug: 'kai-yuan-ke-chi-xu',
+    title: '谈谈开源可持续性',
     date: '2024-11-12',
     readTime: 7,
-    tags: ['oss'],
-    desc: 'Some thoughts on funding and maintaining OSS.',
+    tags: ['开源'],
+    desc: '关于开源项目资助与维护的一点思考。',
   },
   {
-    slug: 'the-art-of-shipping',
-    title: 'The Art of Shipping',
+    slug: 'chuan-shuo-de-yi-zhu',
+    title: '发布是一门艺术',
     date: '2024-07-30',
     readTime: 4,
-    tags: ['process'],
-    desc: 'Why finishing beats perfecting.',
+    tags: ['方法论'],
+    desc: '为什么「做完」比「完美」更重要。',
   },
 ]
 
 export const talks: Post[] = [
   {
-    slug: 'design-engineering',
-    title: 'Design Engineering at Scale',
+    slug: 'she-ji-gong-cheng',
+    title: '规模化设计工程',
     date: '2025-10-12',
-    tags: ['talk'],
+    tags: ['演讲'],
   },
   {
-    slug: 'building-with-vue',
-    title: 'Building Modern Apps with Vue',
+    slug: 'vue-da-jian',
+    title: '用 Vue 构建现代应用',
     date: '2025-04-20',
-    tags: ['talk'],
+    tags: ['演讲'],
   },
   {
-    slug: 'open-source-stories',
-    title: 'Open Source Stories',
+    slug: 'kai-yuan-gu-shi',
+    title: '开源故事',
     date: '2024-11-08',
-    tags: ['talk'],
+    tags: ['演讲'],
   },
   {
-    slug: 'shipping-fast',
-    title: 'Shipping Fast, Shipping Often',
+    slug: 'kuai-su-fa-bu',
+    title: '快速发布，频繁发布',
     date: '2024-05-30',
-    tags: ['talk'],
+    tags: ['演讲'],
   },
 ]

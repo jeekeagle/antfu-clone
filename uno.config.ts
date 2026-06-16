@@ -17,13 +17,7 @@ export default defineConfig({
       // 命名规则：i-{collection}-{name}，如 i-ri-article-line
     }),
     presetWebFonts({
-      provider: 'google',
-      fonts: {
-        sans: 'Inter',
-        mono: 'DM Mono',
-        wisper: 'Bad Script',
-        condensed: 'Roboto Condensed',
-      },
+      provider: 'none', // 字体改用 CDN 引入 LXGW WenKai（见 index.html）
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],

@@ -16,6 +16,8 @@ function applyTheme(s: Scheme) {
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches)
   document.documentElement.classList.toggle('dark', isDark)
+  // 同步更新 lang 属性，方便字体子集切换
+  document.documentElement.lang = 'zh-CN'
 }
 
 export function useColorScheme() {

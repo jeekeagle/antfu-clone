@@ -5,7 +5,7 @@ import { sponsors } from '../data/content'
 const grouped = computed(() => {
   const tiers = ['gold', 'silver', 'bronze', 'past'] as const
   return tiers.map(t => ({
-    tier: t,
+    tier: t === 'past' ? '历史赞助' : t === 'gold' ? '金牌' : t === 'silver' ? '银牌' : '铜牌',
     items: sponsors.filter(s => s.tier === t),
   }))
 })
@@ -13,18 +13,18 @@ const grouped = computed(() => {
 
 <template>
   <div class="text-center prose m-auto mb-8">
-    <h1 class="mb-0 slide-enter-50">Sponsors</h1>
+    <h1 class="mb-0 slide-enter-50">赞助者</h1>
   </div>
 
   <article>
     <div class="prose m-auto slide-enter-content">
       <p class="op50 italic text-center">
-        Thanks to everyone sponsoring my open source work.
+        感谢所有支持我开源工作的人。
       </p>
       <hr />
 
       <section v-for="g in grouped" :key="g.tier" class="mb-8">
-        <h3 v-if="g.items.length" class="capitalize op60">{{ g.tier }}</h3>
+        <h3 v-if="g.items.length" class="op60">{{ g.tier }}</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <a
             v-for="s in g.items"
@@ -52,7 +52,7 @@ const grouped = computed(() => {
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         style="color: inherit"
       >CC BY-NC-SA 4.0</a>
-      2021-{{ new Date().getFullYear() }} © Your Name
+      2021-{{ new Date().getFullYear() }} © 你的名字
     </span>
     <div class="flex-auto"></div>
   </div>

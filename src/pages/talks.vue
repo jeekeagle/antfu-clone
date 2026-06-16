@@ -4,13 +4,13 @@ import { talks } from '../data/posts'
 
 <template>
   <div class="text-center prose m-auto mb-8">
-    <h1 class="important-mb--4-mt-15 slide-enter-50">Talks</h1>
+    <h1 class="important-mb--4-mt-15 slide-enter-50">演讲</h1>
   </div>
 
   <article>
     <div class="prose m-auto slide-enter-content">
       <p class="op50 italic">
-        Conference talks, podcast appearances, and presentations I've given.
+        我做过的会议演讲、播客访谈和公开分享。
       </p>
       <hr />
 
@@ -29,7 +29,7 @@ import { talks } from '../data/posts'
             >{{ t.title }}</a>
           </div>
           <div class="flex gap-3 justify-end items-center op50 text-sm">
-            <span>{{ new Date(t.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) }}</span>
+            <span>{{ new Date(t.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' }) }}</span>
           </div>
         </li>
       </ul>
@@ -43,7 +43,7 @@ import { talks } from '../data/posts'
         href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
         style="color: inherit"
       >CC BY-NC-SA 4.0</a>
-      2021-{{ new Date().getFullYear() }} © Your Name
+      2021-{{ new Date().getFullYear() }} © 你的名字
     </span>
     <div class="flex-auto"></div>
   </div>
