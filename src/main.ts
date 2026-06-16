@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind.css'
@@ -16,8 +16,10 @@ const Demos = () => import('./pages/demos.vue')
 const Podcasts = () => import('./pages/podcasts.vue')
 const Use = () => import('./pages/use.vue')
 
+// GitHub Pages 不支持 SPA 路由 fallback（直接访问 /posts 会 404）
+// 用 hash mode 解决：URL 变成 /#/posts，所有路径都从 / 加载
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     { path: '/', component: Home },
     { path: '/posts', component: Posts },
