@@ -14,9 +14,7 @@ const navItems = [
   { to: 'https://www.wangyiguo.top/posts', title: '博客（OpenWalk）', icon: 'i-ri-article-line', text: '博客', external: true },
   { to: '/projects', title: '项目', icon: 'i-ri-lightbulb-line', text: '项目', external: false },
   { to: '/websites', title: '网站', icon: 'i-ri-global-line', text: '网站', external: false },
-  { to: '/photos', title: '摄影', icon: 'i-ri-camera-3-line', text: '摄影', external: false },
-  { to: '/paintings', title: '绘画', icon: 'i-ri-palette-line', text: '绘画', external: false },
-  { to: '/demos', title: '探索实验', icon: 'i-ri-screenshot-line', text: '探索实验', external: false },
+  { to: '/demos', title: '探索', icon: 'i-ri-screenshot-line', text: '探索', external: false },
 ]
 
 function go(to: string, e: MouseEvent) {

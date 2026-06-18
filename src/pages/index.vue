@@ -60,7 +60,7 @@ const links = {
           target="_blank"
           rel="noopener noreferrer"
           class="!border-none font-semibold"
-        >博客文章 <i class="i-ri-external-link-line text-xs op-50" /></a>，
+        >博客文章</a>，
         聊聊 AI、Agent 架构、个人知识管理和个人成长的那些事。
         我还喜欢看书和写书，把思考过程变成可以回溯的资产。
       </p>
